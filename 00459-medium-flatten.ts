@@ -15,6 +15,11 @@ type cases = [
 ];
 
 // ============= Your Code Here =============
-type Flatten<T extends any[], K = T[number]> = K extends K ? true : false;
-
-type t = Flatten<>;
+type Flatten<S extends any[], T extends any[] = []> = S extends [
+  infer B,
+  ...infer E
+]
+  ? B extends any[]
+    ? Flatten<E, Flatten<B, T>>
+    : Flatten<E, [...T, B]>
+  : T;
