@@ -12,6 +12,8 @@ type ObjUnionKey = keyof ObjUnion;
 
 ## intersection with Mapped Types
 
+### demo1
+
 ```typescript
 
 type ObjInter = {
@@ -21,6 +23,21 @@ type ObjInter = {
   b: 2;
 };
 // never
+
+```
+
+### demo2
+
+```typescript
+type tq = { a?: 1; b?: 2; c: 3 } & { a: 1 };
+type c = {
+  [k in keyof tq]: tq[k];
+};
+/* {
+    a: 1;
+    b?: 2 | undefined;
+    c: 3;
+} */
 
 ```
 

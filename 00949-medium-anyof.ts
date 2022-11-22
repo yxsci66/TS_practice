@@ -19,13 +19,6 @@ type cases = [
 ];
 
 // ============= Your Code Here =============
-type isFalse<T> = T extends 0 | "" | false | undefined | null
-  ? true
-  : [] extends T
-  ? true
-  : {} extends T
-  ? true
-  : never;
 
 type AnyOf<T extends any[]> = T[number] extends
   | 0
