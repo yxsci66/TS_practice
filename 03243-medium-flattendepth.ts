@@ -14,17 +14,30 @@ type cases = [
 ];
 
 // ============= Your Code Here =============
+// type FlattenDepth<
+//   T extends any[],
+//   N extends number = 1,
+//   Array extends any[] = []
+// > = T extends FlattenOnce<T>
+//   ? T
+//   : N extends Array["length"]
+//   ? T
+//   : FlattenDepth<FlattenOnce<T>, N, [...Array, 0]>;
+// type FlattenOnce<T extends any[]> = T extends [infer F, ...infer R]
+//   ? F extends any[]
+//     ? [...F, ...FlattenOnce<R>]
+//     : [F, ...FlattenOnce<R>]
+//   : T;
+
+/**DFS */
 type FlattenDepth<
   T extends any[],
-  N extends number = 1,
-  Array extends any[] = []
-> = T extends FlattenOnce<T>
+  S extends number = 1,
+  U extends any[] = []
+> = U["length"] extends S
   ? T
-  : N extends Array["length"]
-  ? T
-  : FlattenDepth<FlattenOnce<T>, N, [...Array, 0]>;
-type FlattenOnce<T extends any[]> = T extends [infer F, ...infer R]
+  : T extends [infer F, ...infer R]
   ? F extends any[]
-    ? [...F, ...FlattenOnce<R>]
-    : [F, ...FlattenOnce<R>]
+    ? [...FlattenDepth<F, S, [...U, 1]>, ...FlattenDepth<R, S, U>]
+    : [F, ...FlattenDepth<R, S, U>]
   : T;
