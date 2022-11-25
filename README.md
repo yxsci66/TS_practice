@@ -1,4 +1,4 @@
 # TODO:--
 
-1. union with literal type
-2. never in literal type
+- [X] union with literal type
+- [X] never in literal type
