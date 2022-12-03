@@ -21,14 +21,14 @@ interface PropertyDescriptorMap {
 
 ### modifiers
 
-readonly, ?
+`readonly`, `?`
 
 #### modifier prefix
 
-add(assumed):+;
-remove:-;
+add(assumed):`+`;
+remove:`-`;
 
-#### Modifier -- ?
+#### Modifier -- `?`
 
 ```typescript
 type t = {
@@ -55,7 +55,7 @@ type t3 = {
 } */
 ```
 
-#### Modifier -- readonly
+#### Modifier -- `readonly`
 
 readonly
 
