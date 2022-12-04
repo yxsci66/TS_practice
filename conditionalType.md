@@ -26,3 +26,13 @@ type t2 = MatchNumber<1>;
 // never
 
 ```
+
+### match tuple/array
+
+```typescript
+type t = [1] extends [...infer A] ? A : never;
+// [1]
+type tt = [1] extends [1, ...infer A] ? A : never;
+// []
+
+```
