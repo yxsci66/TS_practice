@@ -55,6 +55,14 @@ type t3 = {
 } */
 ```
 
+##### especially for tuple type
+
+```typescript
+type Tup = [1, 2?];
+const a: Tup = [1];
+
+```
+
 #### Modifier -- `readonly`
 
 readonly
