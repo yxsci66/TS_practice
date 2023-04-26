@@ -19,3 +19,7 @@ check config
 ## Config automatically prune for a specific remote repository
 
 `git config remote.origin.prune true`
+
+## FAQ
+
+### [Solution for 'ssh: connect to host github.com port 22: Connection timed out' error](https://gist.github.com/Tamal/1cc77f88ef3e900aeae65f0e5e504794)
