@@ -68,3 +68,24 @@ const a: Tup = [1];
 readonly
 
 `'readonly' type modifier is only permitted on array and tuple literal types.`
+
+## [re-map](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html#key-remapping-via-as)
+
+```typescript
+type MyReadonly2<T, K extends keyof T = keyof T> = {
+  [p in keyof T as p extends K ? never : p]: T[p];
+}
+
+// compare with
+type MyReadonly<T, K extends keyof T = keyof T> = {
+  [p in Exclude<keyof T, K>]: T[p];
+}
+
+// test cases
+type case = {
+  readonly title: string;
+  description?: string;
+  completed: boolean;
+}
+
+```
