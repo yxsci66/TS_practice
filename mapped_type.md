@@ -99,3 +99,12 @@ type b = {
 };
 type c = Equal<a, b>; //true
 ```
+
+## Omit with never
+
+take care of `Omit<object1 & object2, never>`
+
+```typescript
+type c = Omit<{ a: "12" } & { b: "23" }, never>;
+type a = Equal<c, { a: "12"; b: "23" }>; //true
+```
