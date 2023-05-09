@@ -89,3 +89,13 @@ type case = {
 }
 
 ```
+
+## compare mapped type with tuple type
+
+```typescript
+type a = [1, 2, 3];
+type b = {
+  [k in keyof a]: a[k];
+};
+type c = Equal<a, b>; //true
+```
