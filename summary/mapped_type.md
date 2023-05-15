@@ -63,6 +63,19 @@ const a: Tup = [1];
 
 ```
 
+##### tips: a method to filter partial property in mapped type
+
+```typescript
+type a = {
+  r: 123;
+  q: 1;
+  w?: 2;
+};
+type RequiredKeys<T> = {
+  [K in keyof T]-?: {} extends Pick<T, K> ? never : K;
+}[keyof T];// "r" | "q"
+```
+
 #### Modifier -- `readonly`
 
 readonly
