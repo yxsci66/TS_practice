@@ -10,5 +10,9 @@ type cases = [
 
 // ============= Your Code Here =============
 type GetRequired<T> = {
+  [K in keyof T as Record<never, any> extends Pick<T, K> ? never : K]: T[K];
+};
+
+type GetRequired1<T> = {
   [P in keyof T as T[P] extends Required<T>[P] ? P : never]: T[P];
 };

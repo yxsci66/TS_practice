@@ -63,17 +63,23 @@ const a: Tup = [1];
 
 ```
 
-##### tips: a method to filter partial property in mapped type
+##### tips: several methods to filter partial property in mapped type
 
 ```typescript
+// the first
 type a = {
   r: 123;
   q: 1;
   w?: 2;
 };
-type RequiredKeys<T> = {
-  [K in keyof T]-?: {} extends Pick<T, K> ? never : K;
-}[keyof T];// "r" | "q"
+type RequiredKeys1<T> = {
+  [K in keyof T as Record<never, any> extends Pick<T, K> ? never : K]: T[K];
+};
+
+// the second
+type RequiredKeys2<T> = {
+  [P in keyof T as T[P] extends Required<T>[P] ? P : never]: T[P];
+};
 ```
 
 #### Modifier -- `readonly`
